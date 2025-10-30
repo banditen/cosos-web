@@ -4,7 +4,6 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
-  darkMode: ['class'],
   darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -27,11 +26,6 @@ const config: Config = {
     },
     extend: {
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
@@ -45,6 +39,7 @@ const config: Config = {
           900: '#0c4a6e',
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+        },
         background: 'hsl(var(--color-background) / <alpha-value>)',
         foreground: 'hsl(var(--color-foreground) / <alpha-value>)',
         surface: 'hsl(var(--color-surface) / <alpha-value>)',
@@ -74,14 +69,6 @@ const config: Config = {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
@@ -95,6 +82,13 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        none: '0px',
+        sm: 'var(--radius-sm)',
+        DEFAULT: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)',
+        '2xl': 'calc(var(--radius-xl) + 0.75rem)',
+        pill: 'var(--radius-pill)',
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
@@ -109,15 +103,6 @@ const config: Config = {
         'body-sm': ['0.9375rem', { lineHeight: '1.6' }],
         caption: ['0.8125rem', { lineHeight: '1.5', letterSpacing: '0.02em' }],
         overline: ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.14em' }],
-      },
-      borderRadius: {
-        none: '0px',
-        sm: 'var(--radius-sm)',
-        DEFAULT: 'var(--radius-md)',
-        lg: 'var(--radius-lg)',
-        xl: 'var(--radius-xl)',
-        '2xl': 'calc(var(--radius-xl) + 0.75rem)',
-        pill: 'var(--radius-pill)',
       },
       spacing: {
         'space-3xs': 'var(--space-3xs)',
@@ -164,10 +149,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
-}
-
   plugins: [
+    tailwindcssAnimate,
     plugin(function ({ addUtilities }) {
       addUtilities({
         '.text-gradient': {
@@ -187,4 +170,5 @@ const config: Config = {
     }),
   ],
 }
+
 export default config

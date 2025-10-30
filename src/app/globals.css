@@ -133,10 +133,6 @@
   *::before,
   *::after {
     @apply border-border;
-  }
-
-  *, *::before, *::after {
-    @apply border-border;
     box-sizing: border-box;
   }
 
@@ -148,6 +144,8 @@
 
   :root {
     color-scheme: light dark;
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
@@ -184,13 +182,6 @@
       scroll-behavior: auto !important;
     }
   }
-}
-
-@layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-all duration-200 ease-out shadow-soft hover:-translate-y-0.5 hover:shadow-soft-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
-    @apply bg-white text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100;
-  }
 
   details summary {
     list-style: none;
@@ -199,9 +190,22 @@
   details summary::-webkit-details-marker {
     display: none;
   }
+}
 
-  body {
-    @apply min-h-screen bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-all duration-200 ease-out shadow-soft hover:-translate-y-0.5 hover:shadow-soft-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .card {
+    @apply rounded-xl border border-border/60 bg-surface/90 p-6 shadow-soft backdrop-blur-sm transition-shadow duration-300 ease-out hover:shadow-soft-lg;
+  }
+
+  a {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950;
+  }
+}
+
 @keyframes float-slow {
   0%,
   100% {
@@ -212,12 +216,6 @@
   }
 }
 
-  .card {
-    @apply rounded-xl border border-border/60 bg-surface/90 p-6 shadow-soft backdrop-blur-sm transition-shadow duration-300 ease-out hover:shadow-soft-lg;
-  a {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950;
-  }
-}
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -236,6 +234,8 @@
 
   .surface-contrast {
     @apply border border-border/70 bg-surface/95 shadow-soft;
+  }
+
   .animate-float-slow {
     animation: float-slow 14s ease-in-out infinite;
   }

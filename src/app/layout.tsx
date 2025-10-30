@@ -11,9 +11,7 @@ import { ThemeScript } from '@/components/system/theme-script'
 import { siteConfig } from '@/lib/site-config'
 
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 const defaultTitle = 'COSOS — AI Chief of Staff for Founders'
@@ -155,18 +153,6 @@ export default function RootLayout({
   children: ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans bg-background text-foreground antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn('bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100', inter.className)}>
-        <div className="relative flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
     <html lang="en" className="light" data-theme="light" suppressHydrationWarning>
       <body
         className={`${inter.className} min-h-screen bg-white text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100`}
@@ -178,7 +164,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: structuredDataJson }}
         />
-        {children}
+        <div className="relative flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
         <AnalyticsPlaceholder />
       </body>
     </html>
