@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 
@@ -10,7 +11,9 @@ import { ThemeScript } from '@/components/system/theme-script'
 import { siteConfig } from '@/lib/site-config'
 
 import './globals.css'
+import { ThemeProvider } from '@/components/theme-provider'
 
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 const defaultTitle = 'COSOS — AI Chief of Staff for Founders'
@@ -146,6 +149,15 @@ export const metadata: Metadata = {
   },
 }
 
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans bg-background text-foreground antialiased`}>
+        <ThemeProvider>{children}</ThemeProvider>
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
