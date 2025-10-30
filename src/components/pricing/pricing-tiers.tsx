@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import type { pricingContent } from '@/content/pricing'
-import { getAppUrl } from '@/lib/app-url'
+import { getAppUrl } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 
 import { CheckIcon } from './shared-icons'

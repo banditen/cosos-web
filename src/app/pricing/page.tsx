@@ -15,7 +15,7 @@ export const metadata: Metadata = pricingMetadata
 
 export default function PricingPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <SiteHeader content={siteContent.navigation} activePath="/pricing" />
       <main className="flex-1">
         <PricingHero content={pricingContent.hero} />

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
-import { getAppUrl } from '@/lib/app-url'
+import { getAppUrl } from '@/lib/site-config'
 
 import type { landingContent } from '@/content/landing'
 

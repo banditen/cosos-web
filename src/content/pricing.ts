@@ -1,25 +1,39 @@
 import type { Metadata } from 'next'
 
+import { getSiteUrl } from '@/lib/site-config'
+
+const pricingPageUrl = getSiteUrl('/pricing')
+const pricingOgImage = getSiteUrl('/og-image.svg')
+
 export const pricingMetadata: Metadata = {
   title: 'COSOS Pricing — Plans that scale with your operating tempo',
   description:
     'Flexible COSOS plans for founders and lean teams. Start free, unlock proactive follow-ups with Starter, or bring a full chief of staff experience to your team with Pro.',
   alternates: {
-    canonical: 'https://cosos.xyz/pricing',
+    canonical: pricingPageUrl,
   },
   openGraph: {
+    type: 'website',
+    siteName: 'COSOS',
     title: 'COSOS Pricing — Plans that scale with your operating tempo',
     description:
       'Choose the COSOS plan that fits your stage. Automate briefs, defend focus time, and orchestrate follow-ups without breaking your stride.',
-    url: 'https://cosos.xyz/pricing',
-    images: ['/og-image.svg'],
+    url: pricingPageUrl,
+    images: [
+      {
+        url: pricingOgImage,
+        width: 1200,
+        height: 630,
+        alt: 'COSOS pricing tiers highlighting Free, Starter, and Pro options.',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'COSOS Pricing — Plans that scale with your operating tempo',
     description:
       'Choose the COSOS plan that fits your stage. Automate briefs, defend focus time, and orchestrate follow-ups without breaking your stride.',
-    images: ['/og-image.svg'],
+    images: [pricingOgImage],
   },
 }
 
