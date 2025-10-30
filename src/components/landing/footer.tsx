@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 import { getAppUrl } from '@/lib/app-url'
 
-import type { landingContent } from '@/content/landing'
+import type { siteContent } from '@/content/site'
 
-type FooterContent = (typeof landingContent)['footer']
+type FooterContent = (typeof siteContent)['footer']
 
 export function Footer({ content }: { content: FooterContent }) {
   return (

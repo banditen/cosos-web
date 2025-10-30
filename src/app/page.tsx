@@ -9,7 +9,9 @@ import { Hero } from '@/components/landing/hero'
 import { Showcase } from '@/components/landing/showcase'
 import { SocialProof } from '@/components/landing/social-proof'
 import { Testimonials } from '@/components/landing/testimonials'
+import { SiteHeader } from '@/components/layout/site-header'
 import { landingContent } from '@/content/landing'
+import { siteContent } from '@/content/site'
 
 const pageTitle = 'COSOS — AI Chief of Staff for founders who move fast'
 const pageDescription =
@@ -18,11 +20,14 @@ const pageDescription =
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
+  alternates: {
+    canonical: 'https://cosos.xyz/',
+  },
   openGraph: {
     title: pageTitle,
     description: pageDescription,
     images: ['/og-image.svg'],
-    url: 'https://cosos.xyz',
+    url: 'https://cosos.xyz/',
   },
   twitter: {
     card: 'summary_large_image',
@@ -35,7 +40,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      <main>
+      <SiteHeader content={siteContent.navigation} activePath="/" />
+      <main className="flex-1">
         <Hero content={landingContent.hero} />
         <SocialProof content={landingContent.socialProof} />
         <Features content={landingContent.featureGroups} />
@@ -45,7 +51,7 @@ export default function Home() {
         <Faq content={landingContent.faqs} />
         <FinalCta content={landingContent.finalCta} />
       </main>
-      <Footer content={landingContent.footer} />
+      <Footer content={siteContent.footer} />
     </div>
   )
 }
