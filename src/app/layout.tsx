@@ -3,6 +3,9 @@ import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 
+import { Footer } from '@/components/footer'
+import { Navbar } from '@/components/navigation'
+import { cn } from '@/lib/utils'
 import { AnalyticsPlaceholder } from '@/components/system/analytics-placeholder'
 import { ThemeScript } from '@/components/system/theme-script'
 import { siteConfig } from '@/lib/site-config'
@@ -157,6 +160,13 @@ export default function RootLayout({
         <ThemeProvider>{children}</ThemeProvider>
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn('bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100', inter.className)}>
+        <div className="relative flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
     <html lang="en" className="light" data-theme="light" suppressHydrationWarning>
       <body
         className={`${inter.className} min-h-screen bg-white text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100`}

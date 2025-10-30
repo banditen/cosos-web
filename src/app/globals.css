@@ -78,6 +78,8 @@
     text-size-adjust: 100%;
   }
 
+  :root {
+    color-scheme: light dark;
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
@@ -129,8 +131,9 @@
   details summary::-webkit-details-marker {
     display: none;
   }
-}
 
+  body {
+    @apply min-h-screen bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
 @keyframes float-slow {
   0%,
   100% {
@@ -143,6 +146,10 @@
 
   .card {
     @apply rounded-xl border border-border/60 bg-surface/90 p-6 shadow-soft backdrop-blur-sm transition-shadow duration-300 ease-out hover:shadow-soft-lg;
+  a {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950;
+  }
+}
 @keyframes fade-up {
   0% {
     opacity: 0;
