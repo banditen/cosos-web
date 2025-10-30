@@ -1,0 +1,21 @@
+{
+  "name": "COSOS",
+  "short_name": "COSOS",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0ea5e9",
+  "theme_color": "#0f172a",
+  "description": "COSOS is the AI chief of staff that keeps founders and lean teams focused on the moves that matter."
+}

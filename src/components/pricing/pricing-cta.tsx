@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import type { pricingContent } from '@/content/pricing'
-import { getAppUrl } from '@/lib/app-url'
+import { getAppUrl } from '@/lib/site-config'
 
 type PricingCtaBanner = (typeof pricingContent)['ctaBanner']
 

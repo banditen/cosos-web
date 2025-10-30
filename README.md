@@ -1,6 +1,6 @@
 # COSOS Landing Page
 
-Official marketing website for **COSOS** - Your AI Chief of Staff for founders and solopreneurs.
+Official marketing website for **COSOS** – the AI chief of staff that keeps founders and lean teams focused on the moves that matter.
 
 🌐 **Live Site**: [cosos.xyz](https://cosos.xyz)  
 📱 **App**: [app.cosos.xyz](https://app.cosos.xyz)
@@ -13,36 +13,29 @@ Official marketing website for **COSOS** - Your AI Chief of Staff for founders a
 # Install dependencies
 npm install
 
-# Run development server
+# Run development server (http://localhost:3001)
 npm run dev
 ```
 
-Visit [http://localhost:3001](http://localhost:3001)
+The app router automatically reloads when files change.
 
 ---
 
-## 📦 Tech Stack
+## 🌐 Environment Configuration
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Deployment**: Vercel (recommended)
+The landing page relies on a single public environment variable for cross-linking with the COSOS app.
 
----
+| Variable | Purpose | Default Fallback |
+| --- | --- | --- |
+| `NEXT_PUBLIC_APP_URL` | Base URL for in-product CTAs and metadata | `https://app.cosos.xyz` (prod) / `http://localhost:3000` (dev) |
 
-## 🌐 Environment Variables
+Optional:
 
-Create a `.env.local` file:
+| Variable | Purpose | Default Fallback |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Override for the marketing site base URL | Derived from `NEXT_PUBLIC_APP_URL` (`https://cosos.xyz` in prod / `http://localhost:3001` in dev) |
 
-```env
-# App URL (where users sign in)
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-**Production:**
-```env
-NEXT_PUBLIC_APP_URL=https://app.cosos.xyz
-```
+Values are centralized in [`src/lib/site-config.ts`](./src/lib/site-config.ts). Use the exported helpers instead of reaching for `process.env` directly.
 
 ---
 
@@ -50,129 +43,133 @@ NEXT_PUBLIC_APP_URL=https://app.cosos.xyz
 
 ```
 cosos-landing/
+├── public/
+│   ├── favicon.svg
+│   ├── favicon.ico
+│   ├── apple-touch-icon.png
+│   ├── icon-192x192.png
+│   ├── icon-512x512.png
+│   └── site.webmanifest
 ├── src/
-│   └── app/
-│       ├── page.tsx       # Landing page
-│       ├── layout.tsx     # Root layout
-│       └── globals.css    # Global styles
-├── public/                # Static assets
-├── package.json
-├── next.config.js
-├── tailwind.config.ts
+│   ├── app/
+│   │   ├── layout.tsx          # Global metadata, theme setup, analytics placeholder
+│   │   ├── page.tsx            # Landing page
+│   │   ├── sitemap.ts          # Dynamic sitemap (home + pricing)
+│   │   ├── robots.ts           # Robots configuration referencing sitemap
+│   │   └── pricing/page.tsx    # Pricing page
+│   ├── components/
+│   │   ├── landing/            # Home page sections
+│   │   ├── pricing/            # Pricing page sections
+│   │   ├── layout/             # Shared layout primitives (e.g., SiteHeader)
+│   │   └── system/             # Infrastructure helpers (analytics + theming)
+│   ├── content/                # Content and metadata copy
+│   └── lib/
+│       └── site-config.ts      # Environment-aware site + app URL helpers
+├── tailwind.config.ts          # Theme tokens & Tailwind setup
 └── README.md
 ```
 
 ---
 
-## 🎨 Features
+## 🧠 Configuration & Utilities
 
-- ✅ Hero section with value proposition
-- ✅ Features showcase (Daily Briefs, Smart Prioritization, Project Management)
-- ✅ "How It Works" 4-step guide
-- ✅ Call-to-action sections
-- ✅ Footer with navigation
-- ✅ Fully responsive design
-- ✅ Optimized for SEO
-- ✅ Fast page loads
+### `site-config`
+- `siteConfig.getAppUrl(path?)` and `siteConfig.getSiteUrl(path?)` append cleanly sanitized paths.
+- Defaults keep production and local URLs aligned; `NEXT_PUBLIC_SITE_URL` can override the marketing host if needed.
+- Exported `marketingRoutes` powers sitemap generation so new primary routes only need to be added in one place.
+
+### Metadata & Structured Data
+- Global defaults are defined in `layout.tsx` using Next.js Metadata API (OG/Twitter cards, canonical URLs, favicons, manifest, robots).
+- Structured data placeholders for the organization and product are injected via `<script type="application/ld+json">`.
+- Page-level metadata (home + pricing) layer in canonical URLs and OG/Twitter overrides via `getSiteUrl`.
+
+### Analytics Placeholder
+[`AnalyticsPlaceholder`](./src/components/system/analytics-placeholder.tsx) mounts a deferred script in production builds only.
+- Replace the `src` and `data-website-id` once a tracking provider (e.g., Umami, PostHog, Vercel Analytics) is chosen.
+- Development builds keep analytics disabled to avoid noisy logs.
+
+---
+
+## 🧩 Component Usage Guidelines
+
+| Area | Components | Notes |
+| --- | --- | --- |
+| Navigation & layout | `components/layout/*` | `SiteHeader` consumes navigation content and automatically resolves CTAs through `getAppUrl`. |
+| Landing sections | `components/landing/*` | All sections accept typed `content` props sourced from `content/landing.ts` for consistency and copy updates. |
+| Pricing sections | `components/pricing/*` | CTA helpers centralize plan URLs and query string handling. |
+| System helpers | `components/system/*` | `ThemeScript` sets the initial color scheme before hydration; `AnalyticsPlaceholder` handles analytics injection. |
+
+When adding new sections:
+1. Define copy in `src/content/...`.
+2. Build a typed component under the appropriate folder.
+3. Wire it into the page and extend `marketingRoutes` if it introduces a new top-level route.
+
+---
+
+## 🎨 Styling & Theme Tokens
+
+- Tailwind is configured in [`tailwind.config.ts`](./tailwind.config.ts) with `darkMode: 'class'` and a custom `primary` scale.
+- The root layout applies Inter via `next/font` and sets up a theme script that honors the user’s saved preference or system default.
+- Global styles live in `src/app/globals.css`. Use utility classes or `@apply` for shared patterns (`btn-primary`, `card`, etc.).
+- **Updating theme tokens**:
+  1. Adjust color values or spacing in `tailwind.config.ts`.
+  2. Restart `npm run dev` if tokens change (Tailwind needs to rebuild).
+  3. Validate dark/light legibility—`ThemeScript` toggles the `dark` class on `<html>`.
+
+---
+
+## 🔍 SEO & Performance Tooling
+
+- Canonical URLs, Open Graph, and Twitter metadata are hydrated from `siteConfig` to keep environments consistent.
+- `src/app/sitemap.ts` and `src/app/robots.ts` are generated at build time so deployments (Vercel, Render, etc.) automatically serve current routes.
+- Favicons and a web manifest ship with multiple icon sizes for device support.
+- Lighthouse target: **90+** across Performance, Accessibility, Best Practices, and SEO.
+
+---
+
+## 📈 Analytics Setup
+
+1. Configure your analytics provider (e.g., host Umami or enable Vercel Analytics).
+2. Update [`AnalyticsPlaceholder`](./src/components/system/analytics-placeholder.tsx) with the production script URL and site identifier.
+3. Deploy—scripts load only in production builds.
+4. Document the provider + access details for the go-to-market team.
 
 ---
 
 ## 🚢 Deployment
 
-### Deploy to Vercel (Recommended)
+### Deploy to Vercel (recommended)
+1. Push changes to GitHub.
+2. Import the repository into Vercel and select the Next.js preset.
+3. Set environment variables (see table above).
+4. Add custom domains (`cosos.xyz`, `www.cosos.xyz`).
 
-1. **Push to GitHub**
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/yourusername/cosos-landing.git
-   git push -u origin main
-   ```
-
-2. **Deploy to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Import your `cosos-landing` repository
-   - Configure:
-     - **Framework**: Next.js
-     - **Build Command**: `npm run build`
-     - **Output Directory**: `.next`
-
-3. **Set Environment Variable**
-   ```env
-   NEXT_PUBLIC_APP_URL=https://app.cosos.xyz
-   ```
-
-4. **Add Custom Domain**
-   - In Vercel project settings → Domains
-   - Add `cosos.xyz` and `www.cosos.xyz`
-   - Follow DNS instructions
-
-### Deploy to Netlify
-
-Similar process - import repo, set build command, add environment variables.
+### Deploy to Render / other hosts
+- Next.js static output works as long as you run `npm run build && npm run start`.
+- No extra configuration is required beyond the environment variables and a Node 18+ runtime.
 
 ---
 
-## 🔧 Development
+## ✅ Manual QA Checklist
 
-### Available Scripts
+Use this checklist before shipping significant changes:
 
-```bash
-npm run dev      # Start development server (port 3001)
-npm run build    # Build for production
-npm start        # Start production server
-npm run lint     # Run ESLint
-```
+| Check | Status |
+| --- | --- |
+| Lighthouse audit ≥ 90 across Performance / Accessibility / Best Practices / SEO | ☐ |
+| Responsive review at 320px, 768px, 1024px, 1440px | ☐ |
+| Keyboard navigation (skip links, focus rings, CTA buttons) | ☐ |
+| Header + footer navigation links resolve to the correct routes | ☐ |
+| Dark/light mode switch respects saved/system preference without hydration warnings | ☐ |
+| Analytics placeholder configured with production credentials | ☐ |
 
-### Making Changes
-
-1. Edit `src/app/page.tsx` for content changes
-2. Edit `src/app/globals.css` for styling
-3. Edit `tailwind.config.ts` for theme customization
+Record findings (and any follow-up issues) alongside deployment notes to keep stakeholders aligned.
 
 ---
 
-## 🎯 SEO Optimization
+## 📝 License & Contact
 
-The landing page is optimized for search engines:
+- License: Proprietary – All rights reserved.
+- Questions? Reach out at [hello@cosos.xyz](mailto:hello@cosos.xyz).
 
-- Semantic HTML structure
-- Meta tags configured in `layout.tsx`
-- Fast loading times
-- Mobile-responsive
-- Accessible design
-
-To customize SEO:
-- Edit metadata in `src/app/layout.tsx`
-- Add `robots.txt` in `public/`
-- Add `sitemap.xml` in `public/`
-
----
-
-## 🔗 Related Repositories
-
-- **Main App**: [cosos-ai](https://github.com/yourusername/cosos-ai) - Dashboard application and backend
-
----
-
-## 📝 License
-
-Proprietary - All rights reserved
-
----
-
-## �� Contributing
-
-This is a private repository. For questions or suggestions, contact the team.
-
----
-
-## 📧 Contact
-
-- **Website**: [cosos.xyz](https://cosos.xyz)
-- **App**: [app.cosos.xyz](https://app.cosos.xyz)
-
----
-
-Built with ❤️ for founders who want to focus on what matters.
+Built with ❤️ for founders who want to stay in momentum.

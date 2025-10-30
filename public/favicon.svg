@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>COSOS icon</title>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)" />
+  <path d="M22 21c0-4.4183 3.5817-8 8-8h4c8.8366 0 16 7.1634 16 16s-7.1634 16-16 16h-1c-3.8659 0-7-3.134-7-7 0-3.866 3.1341-7 7-7h4c1.6569 0 3-1.3431 3-3s-1.3431-3-3-3h-4c-3.8659 0-7-3.134-7-7z" fill="#ffffff" opacity="0.92" />
+</svg>
