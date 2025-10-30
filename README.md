@@ -30,6 +30,26 @@ Visit [http://localhost:3001](http://localhost:3001)
 
 ---
 
+## 🧩 UI Toolkit (shadcn/ui)
+
+This project is pre-configured with [shadcn/ui](https://ui.shadcn.com) components for consistent, accessible primitives.
+
+- CLI configuration lives in `components.json` and targets the `src` directory (`@/components`, `@/lib/utils`).
+- Base utilities such as the `cn` helper (`src/lib/utils.ts`) and primitives (`Button`, `Badge`, `Card`, `Separator`, `Sheet`) are available under `src/components/ui`.
+- Tailwind is configured with shadcn token layers and the `tailwindcss-animate` plugin while preserving the existing primary palette.
+
+### Adding additional components
+
+```bash
+npx shadcn@latest add component-name
+```
+
+The command will respect the repository aliases and Tailwind setup. Prefer reusing existing primitives when possible to keep the dependency footprint minimal.
+
+After installing new components, run `npm run lint` and `npm run build` to ensure the UI toolkit stays compatible with the deployment pipeline.
+
+---
+
 ## 🌐 Environment Variables
 
 Create a `.env.local` file:
@@ -51,11 +71,16 @@ NEXT_PUBLIC_APP_URL=https://app.cosos.xyz
 ```
 cosos-landing/
 ├── src/
-│   └── app/
-│       ├── page.tsx       # Landing page
-│       ├── layout.tsx     # Root layout
-│       └── globals.css    # Global styles
+│   ├── app/
+│   │   ├── page.tsx       # Landing page
+│   │   ├── layout.tsx     # Root layout
+│   │   └── globals.css    # Global styles
+│   ├── components/
+│   │   └── ui/            # shadcn/ui primitives
+│   └── lib/
+│       └── utils.ts       # Shared utilities (cn helper)
 ├── public/                # Static assets
+├── components.json        # shadcn/ui CLI config
 ├── package.json
 ├── next.config.js
 ├── tailwind.config.ts
