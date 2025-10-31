@@ -1,8 +1,8 @@
 # COSOS Landing Page
 
-Official marketing website for **COSOS** – the AI chief of staff that keeps founders and lean teams focused on the moves that matter.
+Official marketing website for **COSOS** – Command Center for Executive Intelligence. The proactive AI decision-maker for solopreneurs and early-stage CEOs that transforms business execution from reactive chaos into strategic clarity.
 
-🌐 **Live Site**: [cosos.xyz](https://cosos.xyz)  
+🌐 **Live Site**: [cosos.xyz](https://cosos.xyz)
 📱 **App**: [app.cosos.xyz](https://app.cosos.xyz)
 
 ---

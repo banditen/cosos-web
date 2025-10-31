@@ -2,18 +2,18 @@ import { siteContent } from './site'
 
 export const landingContent = {
   hero: {
-    eyebrow: 'Operate with leverage',
-    title: 'Your AI Chief of Staff for focus and follow-through',
-    highlight: 'AI Chief of Staff',
+    eyebrow: 'Command Center for Executive Intelligence',
+    title: 'The proactive AI decision-maker for solopreneurs and early-stage CEOs',
+    highlight: 'proactive AI decision-maker',
     description:
-      'COSOS captures commitments across your inbox and calendar, drafts the next best move, and protects the time you need to ship what matters.',
+      'Know if you\'re winning, every single day. COSOS analyzes your business every morning, tells you what matters, and shows you the path forward—from day 0.',
     primaryCtaLabel: 'Launch COSOS',
-    secondaryCtaLabel: 'See the product flow',
+    secondaryCtaLabel: 'See how it works',
     secondaryCtaHref: '#product-tour',
     proofPoints: [
-      'Daily briefings grounded in your goals',
-      'Actionable drafts for quick approvals',
-      'Automated prioritization across every input',
+      'Proactive intelligence without prompting',
+      'Business progress tracking, not just tasks',
+      'Day-0 value from your first sync',
     ],
   },
   socialProof: {
@@ -22,106 +22,106 @@ export const landingContent = {
   },
   featureGroups: {
     primary: {
-      title: 'Everything you expect from an elite chief of staff, automated',
+      title: 'Proactive intelligence that transforms chaos into clarity',
       features: [
         {
-          title: 'Precision daily briefs',
+          title: 'Strategic daily briefs',
           description:
-            'Wake up to a prioritized agenda that combines meetings, tasks, and draft communications so you know exactly how to win the day.',
-          icon: '🗓️',
+            'Every morning, COSOS analyzes your business state and delivers priorities, time blocks, quick wins, and flags—without you asking.',
+          icon: '🎯',
         },
         {
-          title: 'Proactive follow-ups',
+          title: 'Business progress tracking',
           description:
-            'Let COSOS craft the next email or update, ready for your review, based on the threads and projects that are heating up.',
-          icon: '📬',
+            'Know if you\'re winning. Track what matters—revenue, growth, velocity—and see how your daily actions connect to quarterly goals.',
+          icon: '📊',
         },
         {
-          title: 'Focus time defended',
+          title: 'Day-0 value delivery',
           description:
-            'Identify the highest-leverage work and automatically block distraction-free time to get it across the line.',
-          icon: '🛡️',
+            'No setup tax. COSOS delivers actionable insights from your first sync—analyze 19 emails on day 1, generate your first brief immediately.',
+          icon: '⚡',
         },
       ],
     },
     secondary: {
-      title: 'Built for founders and lean teams',
+      title: 'Built for execution, not coordination',
       features: [
         {
-          title: 'Unified source of truth',
+          title: 'Proactive by design',
           description:
-            'Bring email, calendar, and tasks into one adaptive surface that evolves with every decision.',
+            'COSOS doesn\'t wait for you to ask. It analyzes, recommends, and flags risks before they become problems.',
         },
         {
-          title: 'Delegation without friction',
+          title: 'Strategic reasoning',
           description:
-            'Assign outcomes, capture context, and trust COSOS to keep the loop tight with nudges and recaps.',
+            'Every priority comes with the "why"—understand how each action moves your business forward toward your goals.',
         },
         {
-          title: 'Momentum analytics',
+          title: 'Outcome-focused intelligence',
           description:
-            'Track how your focus is allocated and surface leading indicators before they become blockers.',
+            'We measure business outcomes, not task completion. Did revenue increase? Did growth accelerate? Did velocity improve?',
         },
       ],
     },
   },
   flow: {
     id: 'product-tour',
-    title: 'How COSOS keeps you a step ahead',
+    title: 'From reactive chaos to strategic clarity',
     steps: [
       {
         title: 'Connect your workspace',
-        description: 'Securely link Gmail, Calendar, and the tools you run your business on in minutes.',
+        description: 'Securely link Gmail, Calendar, and your business tools. COSOS starts analyzing immediately—no configuration required.',
         number: '01',
       },
       {
-        title: 'Set intentions',
-        description: 'Share quarterly goals and near-term priorities so COSOS can weigh every decision the way you do.',
+        title: 'Share your context',
+        description: 'Tell COSOS your mission, stage, goals, and challenges. This becomes the lens for every recommendation.',
         number: '02',
       },
       {
-        title: 'Review your brief',
-        description: 'Receive a smart rundown each morning covering meetings, blockers, and ready-to-send drafts.',
+        title: 'Get your first brief',
+        description: 'Wake up to proactive intelligence: priorities ranked by impact, time blocks optimized, risks flagged, quick wins surfaced.',
         number: '03',
       },
       {
-        title: 'Stay in momentum',
-        description: 'COSOS monitors execution, follows up with stakeholders, and adjusts the plan as realities shift.',
+        title: 'Know if you\'re winning',
+        description: 'Track business progress daily. COSOS connects your actions to outcomes and tells you if you\'re on track to hit your goals.',
         number: '04',
       },
     ],
   },
   showcase: {
-    title: 'A living workspace that thinks ahead',
+    title: 'Your command center for business intelligence',
     description:
-      'See upcoming meetings, flagged risks, and AI-authored drafts in one collaborative surface designed for fast approvals.',
+      'See business progress, strategic priorities, and proactive recommendations in one intelligent dashboard that updates every morning.',
     badge: 'Live preview',
     highlights: [
-      { label: 'Active priorities', value: '12' },
-      { label: 'Follow-ups drafted', value: '7' },
-      { label: 'Hours reclaimed weekly', value: '6.5' },
+      { label: 'Business metrics tracked', value: '8' },
+      { label: 'Strategic priorities', value: '5' },
+      { label: 'Days to first value', value: '0' },
     ],
   },
   testimonials: {
-    title: 'Leaders shipping faster with COSOS',
+    title: 'CEOs making better decisions with COSOS',
     items: [
       {
         quote:
-          'COSOS keeps my seed-stage team aligned without me living in spreadsheets. The daily brief means I start with clarity instead of cleanup.',
+          'COSOS tells me every morning if I\'m on track to hit my quarterly goals. That clarity alone is worth 10x the price.',
         name: 'Avery Chen',
         role: 'Founder, Relay Labs',
       },
       {
         quote:
-          'The follow-up drafts are scarily good. I approve in seconds and move on, which compounding over a week is huge.',
+          'I used to spend hours figuring out what to prioritize. Now COSOS does it for me—proactively, every day, with strategic reasoning.',
         name: 'Jordan Malik',
         role: 'Operator & Investor',
       },
       {
         quote:
-          'It feels like having a chief of staff who already knows our playbook—context stays fresh and the team feels the support.',
+          'Day 0 value is real. Connected my email, got my first brief in 5 minutes. No setup, no configuration—just intelligence.',
         name: 'Sasha Ortiz',
-        role: 'Head of Operations, Studio North',
+        role: 'CEO, Studio North',
       },
     ],
   },
@@ -129,32 +129,32 @@ export const landingContent = {
     title: 'Frequently asked questions',
     items: [
       {
-        question: 'How does COSOS access my data?',
+        question: 'How is COSOS different from other AI assistants?',
         answer:
-          'We connect through read-only, permissioned APIs. You control what COSOS can see, and everything is encrypted at rest and in transit.',
+          'COSOS is proactive, not reactive. We analyze your business every morning and tell you what matters—you don\'t have to ask. We measure business outcomes, not task completion. And we deliver value from day 0, not after weeks of setup.',
       },
       {
-        question: 'Can I collaborate with my team?',
+        question: 'Is my data private and secure?',
         answer:
-          'Yes. Invite teammates to share briefs, delegate follow-ups, and keep everyone aligned on priorities without forwarding threads.',
+          'Absolutely. Your AI learns ONLY from your data—no cross-user training. All data is encrypted at rest and in transit with enterprise-grade security. We use row-level security, OAuth 2.0 best practices, and never share or sell your data. Your business intelligence is yours alone.',
       },
       {
-        question: 'What if my priorities change mid-week?',
+        question: 'How quickly can I get value from COSOS?',
         answer:
-          'Update your focus areas any time and COSOS will re-prioritize briefs, reschedule focus blocks, and update draft communications instantly.',
+          'Day 0. Connect your email and calendar, share your business context, and get your first strategic brief in under 5 minutes. No configuration, no setup tax—just immediate intelligence.',
       },
       {
-        question: 'Do you support other tools besides Google?',
+        question: 'What integrations do you support?',
         answer:
-          'We start with Google Workspace. Slack, Linear, and Notion integrations are available for early partners—ask us during onboarding.',
+          'We start with Gmail and Google Calendar for immediate value. Slack, Linear, and Notion integrations are available for early partners. We\'re adding more based on user demand—let us know what you need.',
       },
     ],
   },
   finalCta: {
-    title: 'Give yourself the unfair advantage',
+    title: 'Know if you\'re winning, every single day',
     description:
-      'Launch COSOS today and run your week with the leverage of an experienced chief of staff—without adding headcount.',
-    primaryCtaLabel: 'Open the app',
+      'Transform business execution from reactive chaos into strategic clarity. Start making better decisions with proactive AI intelligence—from day 0.',
+    primaryCtaLabel: 'Launch COSOS',
     secondaryCtaLabel: 'Talk with our team',
     secondaryCtaHref: 'mailto:hello@cosos.xyz',
   },

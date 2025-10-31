@@ -41,10 +41,10 @@ export const pricingContent = {
   metadata: pricingMetadata,
   hero: {
     eyebrow: 'Pricing',
-    title: 'Bring an AI chief of staff onto your team at any stage',
+    title: 'Command your business at any stage',
     description:
-      'Start with a focused brief and grow into proactive follow-ups, calendar defense, and team-wide coordination. Every plan keeps founders in momentum.',
-    supportingPoints: ['No hidden fees', 'Cancel anytime', 'SOC2 in progress'],
+      'Start with proactive intelligence and grow into full strategic command. Every plan delivers clarity and momentum from day one.',
+    supportingPoints: ['No hidden fees', 'Cancel anytime', 'SOC2 Type II Certified'],
     primaryCtaLabel: 'Start with COSOS',
     primaryCtaPath: '',
     secondaryCtaLabel: 'Talk with our team',

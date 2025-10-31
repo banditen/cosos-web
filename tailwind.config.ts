@@ -4,7 +4,6 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
-  darkMode: ['class'],
   darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -32,39 +31,31 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        // Brand colors from screenshot
+        brand: {
+          blue: '#0066FF',
+          'blue-light': '#00D4FF',
+          'blue-pale': '#B3E5FC',
+          red: '#FF0055',
+          'red-bright': '#FF1744',
+          yellow: '#FFD600',
+          'yellow-bright': '#FFEB3B',
+          black: '#000000',
+          'gray-dark': '#2C2C2C',
+        },
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#e6f2ff',
+          100: '#b3d9ff',
+          200: '#80c0ff',
+          300: '#4da7ff',
+          400: '#1a8eff',
+          500: '#0066FF', // Brand blue
+          600: '#0052cc',
+          700: '#003d99',
+          800: '#002966',
+          900: '#001433',
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
-        background: 'hsl(var(--color-background) / <alpha-value>)',
-        foreground: 'hsl(var(--color-foreground) / <alpha-value>)',
-        surface: 'hsl(var(--color-surface) / <alpha-value>)',
-        border: 'hsl(var(--color-border) / <alpha-value>)',
-        muted: {
-          DEFAULT: 'hsl(var(--color-muted) / <alpha-value>)',
-          foreground: 'hsl(var(--color-muted-foreground) / <alpha-value>)',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--color-accent) / <alpha-value>)',
-          foreground: 'hsl(var(--color-accent-foreground) / <alpha-value>)',
-          subtle: 'hsl(var(--color-accent-subtle) / <alpha-value>)',
-        },
-        success: 'hsl(var(--color-success) / <alpha-value>)',
-        warning: 'hsl(var(--color-warning) / <alpha-value>)',
-        danger: 'hsl(var(--color-danger) / <alpha-value>)',
-        gradient: {
-          start: 'hsl(var(--gradient-start) / <alpha-value>)',
-          middle: 'hsl(var(--gradient-middle) / <alpha-value>)',
-          end: 'hsl(var(--gradient-end) / <alpha-value>)',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
@@ -90,11 +81,6 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
@@ -141,6 +127,8 @@ const config: Config = {
         soft: 'var(--shadow-soft)',
         'soft-lg': '0 45px 90px -40px rgba(15, 23, 42, 0.2)',
         'inner-card': 'inset 0 1px 0 rgba(255, 255, 255, 0.35)',
+        'brand': '0 8px 32px rgba(0, 102, 255, 0.15)',
+        'brand-lg': '0 16px 48px rgba(0, 102, 255, 0.2)',
       },
       dropShadow: {
         soft: '0 25px 35px rgba(79, 70, 229, 0.18)',
@@ -157,17 +145,30 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'slide-up': {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        'scale-in': {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.5s ease-in-out',
+        'slide-up': 'slide-up 0.5s ease-out',
+        'scale-in': 'scale-in 0.3s ease-out',
       },
     },
   },
-  plugins: [tailwindcssAnimate],
-}
-
   plugins: [
+    tailwindcssAnimate,
     plugin(function ({ addUtilities }) {
       addUtilities({
         '.text-gradient': {
@@ -187,4 +188,5 @@ const config: Config = {
     }),
   ],
 }
+
 export default config

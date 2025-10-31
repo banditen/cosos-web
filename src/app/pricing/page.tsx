@@ -1,31 +1,57 @@
 import type { Metadata } from 'next'
 
-import { Footer } from '@/components/landing/footer'
-import { SiteHeader } from '@/components/layout/site-header'
-import { FeatureComparison } from '@/components/pricing/feature-comparison'
-import { PricingCta } from '@/components/pricing/pricing-cta'
-import { PricingFaq } from '@/components/pricing/pricing-faq'
-import { PricingHero } from '@/components/pricing/pricing-hero'
-import { PricingTestimonial } from '@/components/pricing/pricing-testimonial'
-import { PricingTiers } from '@/components/pricing/pricing-tiers'
-import { pricingContent, pricingMetadata } from '@/content/pricing'
-import { siteContent } from '@/content/site'
+import { Navigation } from '@/components/Navigation'
+import { Pricing } from '@/components/Pricing'
+import { FAQ } from '@/components/FAQ'
+import { CTA } from '@/components/CTA'
+import { Footer } from '@/components/Footer'
+import { getSiteUrl } from '@/lib/site-config'
 
-export const metadata: Metadata = pricingMetadata
+const pricingPageUrl = getSiteUrl('/pricing')
+const pricingOgImage = getSiteUrl('/og-image.svg')
+
+export const metadata: Metadata = {
+  title: 'COSOS Pricing — Plans that scale with your operating tempo',
+  description:
+    'Flexible COSOS plans for solopreneurs and early-stage CEOs. Start free with Trial, or unlock full proactive intelligence with Pro.',
+  alternates: {
+    canonical: pricingPageUrl,
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'COSOS',
+    title: 'COSOS Pricing — Plans that scale with your operating tempo',
+    description:
+      'Flexible COSOS plans for solopreneurs and early-stage CEOs. Start free with Trial, or unlock full proactive intelligence with Pro.',
+    url: pricingPageUrl,
+    images: [
+      {
+        url: pricingOgImage,
+        width: 1200,
+        height: 630,
+        alt: 'COSOS Pricing',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'COSOS Pricing — Plans that scale with your operating tempo',
+    description:
+      'Flexible COSOS plans for solopreneurs and early-stage CEOs. Start free with Trial, or unlock full proactive intelligence with Pro.',
+    images: [pricingOgImage],
+  },
+}
 
 export default function PricingPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <SiteHeader content={siteContent.navigation} activePath="/pricing" />
+    <div className="flex min-h-screen flex-col bg-white text-slate-900">
+      <Navigation />
       <main className="flex-1">
-        <PricingHero content={pricingContent.hero} />
-        <PricingTiers tiers={pricingContent.tiers} recommendedTierId={pricingContent.recommendedTierId} />
-        <FeatureComparison content={pricingContent.comparison} />
-        <PricingTestimonial content={pricingContent.testimonial} />
-        <PricingFaq content={pricingContent.faq} />
-        <PricingCta content={pricingContent.ctaBanner} />
+        <Pricing />
+        <FAQ />
+        <CTA />
       </main>
-      <Footer content={siteContent.footer} />
+      <Footer />
     </div>
   )
 }

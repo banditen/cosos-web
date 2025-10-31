@@ -1,24 +1,19 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
-import { Inter } from 'next/font/google'
+import { Inter, Spline_Sans, Space_Grotesk } from 'next/font/google'
 
-import { Footer } from '@/components/footer'
-import { Navbar } from '@/components/navigation'
-import { cn } from '@/lib/utils'
-import { AnalyticsPlaceholder } from '@/components/system/analytics-placeholder'
-import { ThemeScript } from '@/components/system/theme-script'
 import { siteConfig } from '@/lib/site-config'
 
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' })
+const splineSans = Spline_Sans({ subsets: ['latin'], variable: '--font-spline', display: 'swap', weight: ['300', '400', '500', '600', '700'] })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-heading', display: 'swap' })
 
-const defaultTitle = 'COSOS — AI Chief of Staff for Founders'
+const defaultTitle = 'COSOS — Command Center for Executive Intelligence'
 const defaultDescription =
-  'Your AI-powered chief of staff that helps founders and solopreneurs focus on what matters most.'
+  'The proactive AI decision-maker for solopreneurs and early-stage CEOs. Know if you\'re winning, every single day.'
 const socialPreview = siteConfig.getSiteUrl('/og-image.svg')
 const structuredData = [
   {
@@ -41,9 +36,9 @@ const structuredData = [
   {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: 'COSOS AI Chief of Staff',
+    name: 'COSOS Command Center for Executive Intelligence',
     description:
-      'Automated briefs, proactive follow-ups, and defended focus time to keep founders and lean teams in momentum.',
+      'Proactive AI decision-maker that transforms business execution from reactive chaos into strategic clarity for solopreneurs and early-stage CEOs.',
     brand: {
       '@type': 'Brand',
       name: 'COSOS',
@@ -79,12 +74,13 @@ export const metadata: Metadata = {
   applicationName: 'COSOS',
   generator: 'Next.js',
   keywords: [
-    'AI chief of staff',
-    'founder productivity',
-    'daily brief automation',
-    'startup operations',
-    'follow-up automation',
-    'focus time management',
+    'proactive AI decision-maker',
+    'command center for executives',
+    'business intelligence for founders',
+    'strategic clarity',
+    'solopreneur productivity',
+    'early-stage CEO tools',
+    'business progress tracking',
   ],
   category: 'Productivity',
   creator: 'COSOS Team',
@@ -156,22 +152,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans bg-background text-foreground antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn('bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100', inter.className)}>
-        <div className="relative flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-    <html lang="en" className="light" data-theme="light" suppressHydrationWarning>
-      <body
-        className={`${inter.className} min-h-screen bg-white text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100`}
-      >
-        <ThemeScript />
+      <body className={`${inter.variable} ${splineSans.variable} ${spaceGrotesk.variable}`}>
         <Script
           id="cosos-structured-data"
           type="application/ld+json"
@@ -179,7 +160,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: structuredDataJson }}
         />
         {children}
-        <AnalyticsPlaceholder />
       </body>
     </html>
   )
